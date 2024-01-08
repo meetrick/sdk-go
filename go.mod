@@ -3,25 +3,27 @@ module github.com/InjectiveLabs/sdk-go
 go 1.19
 
 require (
-	cosmossdk.io/errors v1.0.0-beta.7
-	cosmossdk.io/math v1.0.1
-	github.com/CosmWasm/wasmd v0.40.2
+	cosmossdk.io/errors v1.0.0
+	cosmossdk.io/math v1.1.2
+	github.com/CosmWasm/wasmd v0.45.0
 	github.com/InjectiveLabs/suplog v1.3.3
 	github.com/bandprotocol/bandchain-packet v0.0.4
 	github.com/btcsuite/btcd v0.23.4
 	github.com/btcsuite/btcd/btcutil v1.1.3
 	github.com/cometbft/cometbft v0.37.2
 	github.com/cosmos/cosmos-proto v1.0.0-beta.3
-	github.com/cosmos/cosmos-sdk v0.47.3
+	github.com/cosmos/cosmos-sdk v0.47.5
 	github.com/cosmos/gogoproto v1.4.10
-	github.com/cosmos/ibc-go/v7 v7.0.1
+	github.com/cosmos/ibc-go/v7 v7.3.0
 	github.com/ethereum/go-ethereum v1.11.5
+	github.com/golang/protobuf v1.5.3
 	github.com/google/uuid v1.4.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3
 	github.com/huandu/go-assert v1.1.5
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pkg/errors v0.9.1
 	github.com/shopspring/decimal v1.2.0
+	github.com/stretchr/testify v1.8.4
 	github.com/tyler-smith/go-bip39 v1.1.0
 	golang.org/x/crypto v0.11.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20230629202037-9506855d4529
@@ -39,7 +41,7 @@ require (
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
 	github.com/ChainSafe/go-schnorrkel v0.0.0-20200405005733-88cbf1b4c40d // indirect
-	github.com/CosmWasm/wasmvm v1.2.4 // indirect
+	github.com/CosmWasm/wasmvm v1.5.0 // indirect
 	github.com/StackExchange/wmi v1.2.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aws/aws-sdk-go v1.44.203 // indirect
@@ -61,7 +63,7 @@ require (
 	github.com/confio/ics23/go v0.9.0 // indirect
 	github.com/cosmos/btcutil v1.0.5 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
-	github.com/cosmos/iavl v0.20.0 // indirect
+	github.com/cosmos/iavl v0.20.1 // indirect
 	github.com/cosmos/ics23/go v0.10.0 // indirect
 	github.com/cosmos/ledger-cosmos-go v0.12.2 // indirect
 	github.com/danieljoos/wincred v1.1.2 // indirect
@@ -86,7 +88,6 @@ require (
 	github.com/gofrs/uuid v4.3.0+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v1.1.0 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
@@ -124,10 +125,10 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/petermattis/goid v0.0.0-20230317030725-371a4b8eda08 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/prometheus/client_golang v1.15.0 // indirect
+	github.com/prometheus/client_golang v1.16.0 // indirect
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.42.0 // indirect
-	github.com/prometheus/procfs v0.9.0 // indirect
+	github.com/prometheus/procfs v0.10.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/sasha-s/go-deadlock v0.3.1 // indirect
@@ -139,7 +140,6 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.16.0 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/subosito/gotenv v1.4.2 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20220721030215-126854af5e6d // indirect
 	github.com/tendermint/go-amino v0.16.0 // indirect
@@ -164,10 +164,10 @@ require (
 
 replace (
 	cosmossdk.io/math => github.com/InjectiveLabs/cosmos-sdk/math v0.47.3-inj-1
-	github.com/CosmWasm/wasmd => github.com/InjectiveLabs/wasmd v0.40.2-inj
+	github.com/CosmWasm/wasmd => github.com/InjectiveLabs/wasmd v0.45.0-inj
 	github.com/bandprotocol/bandchain-packet => github.com/InjectiveLabs/bandchain-packet v0.0.4-inj-1
 	github.com/cometbft/cometbft => github.com/InjectiveLabs/cometbft v0.37.2-inj
-	github.com/cosmos/cosmos-sdk => github.com/InjectiveLabs/cosmos-sdk v0.47.3-inj-7
+	github.com/cosmos/cosmos-sdk => github.com/InjectiveLabs/cosmos-sdk v0.47.3-inj-9
 	github.com/cosmos/ibc-go/v7 => github.com/InjectiveLabs/ibc-go/v7 v7.2.0-inj
 	github.com/syndtr/goleveldb => github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
 )
