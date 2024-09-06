@@ -1,8 +1,12 @@
 package chain
 
 import (
+	"encoding/json"
+	"io"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 
 	"github.com/InjectiveLabs/sdk-go/client"
 	"github.com/InjectiveLabs/sdk-go/client/common"
@@ -49,6 +53,51 @@ func createClient(senderAddress cosmtypes.AccAddress, cosmosKeyring keyring.Keyr
 	)
 
 	return chainClient, err
+}
+
+func TestOfacList(t *testing.T) {
+	network := common.LoadNetwork("testnet", "lb")
+	tmClient, err := rpchttp.New(network.TmEndpoint, "/websocket")
+	assert.NoError(t, err)
+
+	senderAddress, cosmosKeyring, err := accountForTests()
+	assert.NoError(t, err)
+
+	testList := []string{
+		senderAddress.String(),
+	}
+	jsonData, err := json.Marshal(testList)
+	assert.NoError(t, err)
+	ofacListFilename = "ofac_test.json"
+	file, err := os.Create(getOfacListPath())
+	defer func() {
+		err = os.Remove(getOfacListPath())
+		assert.NoError(t, err)
+		ofacListFilename = defaultofacListFilename
+	}()
+	_, err = io.WriteString(file, string(jsonData))
+	assert.NoError(t, err)
+	err = file.Close()
+	assert.NoError(t, err)
+	clientCtx, err := NewClientContext(
+		network.ChainId,
+		senderAddress.String(),
+		cosmosKeyring,
+	)
+	assert.NoError(t, err)
+
+	clientCtx = clientCtx.WithNodeURI(network.TmEndpoint).WithClient(tmClient)
+
+	testChecker, err := NewOfacChecker()
+	assert.NoError(t, err)
+	assert.Equal(t, 1, len(testChecker.ofacList))
+
+	_, err = NewChainClient(
+		clientCtx,
+		network,
+		common.OptionGasPrices(client.DefaultGasPriceWithDenom),
+	)
+	assert.Error(t, err)
 }
 
 func TestDefaultSubaccount(t *testing.T) {
@@ -103,5 +152,4 @@ func TestGetSubaccountWithIndex(t *testing.T) {
 	if subaccountThirty != expectedSubaccountThirtyIdHash {
 		t.Error("The subaccount with index 30 was calculated incorrectly")
 	}
-
 }
